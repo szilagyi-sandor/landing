@@ -5,3 +5,5 @@ export function App() {
     </div>
   );
 }
+
+// CHECKED 1.0

@@ -9,7 +9,7 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
   ],
-  ignorePatterns: ["dist", ".eslintrc.cjs"],
+  ignorePatterns: ["dist", ".eslintrc.cjs", "plugins/ssm-eslint"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",
@@ -17,12 +17,18 @@ module.exports = {
     project: ["./tsconfig.json", "./tsconfig.node.json"],
     tsconfigRootDir: __dirname,
   },
-  plugins: ["react-refresh"],
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
+  plugins: ["react-refresh", "ssm-eslint"],
   rules: {
     "react-refresh/only-export-components": [
       "warn",
       { allowConstantExport: true },
     ],
     "@typescript-eslint/no-non-null-assertion": 0,
+    "ssm-eslint/required-checked-comment": 2,
   },
 };
