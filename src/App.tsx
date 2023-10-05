@@ -1,3 +1,5 @@
+import "./assets/styles/defaults.scss";
+
 export function App() {
   return (
     <div id="app">
