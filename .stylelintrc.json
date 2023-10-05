@@ -1,0 +1,8 @@
+{
+  "extends": ["stylelint-config-standard-scss"],
+  "plugins": ["./plugins/ssm-stylelint/requiredCheckedComment.js"],
+  "rules": {
+    "value-no-vendor-prefix": null,
+    "ssm-plugin/requiredCheckedComment": true
+  }
+}

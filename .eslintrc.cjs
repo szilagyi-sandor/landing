@@ -9,13 +9,19 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
   ],
-  ignorePatterns: ["dist", ".eslintrc.cjs", "plugins/ssm-eslint"],
+  ignorePatterns: [
+    "dist",
+    ".eslintrc.cjs",
+    "plugins/ssm-eslint",
+    "plugins/ssm-stylelint",
+  ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
     project: ["./tsconfig.json", "./tsconfig.node.json"],
     tsconfigRootDir: __dirname,
+    extraFileExtensions: [".scss"],
   },
   settings: {
     react: {

@@ -15,6 +15,9 @@ export default defineConfig({
         lintCommand:
           "eslint --cache --cache-location ./node_modules/.cache/eslint src",
       },
+      stylelint: {
+        lintCommand: 'stylelint "**/*.scss"',
+      },
     }),
   ],
 });

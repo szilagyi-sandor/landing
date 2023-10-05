@@ -1,5 +1,5 @@
-$font: Verdana, sans-serif;
-$headingFont: Georgia, serif;
+$font: verdana, sans-serif;
+$heading-font: georgia, serif;
 
 html {
   height: 100%;
@@ -68,19 +68,6 @@ strong {
   font-weight: 700;
 }
 
-figure {
-  display: block;
-  margin: 0;
-
-  img {
-    margin: 0;
-  }
-
-  figcaption {
-    display: block;
-  }
-}
-
 form {
   fieldset {
     border: 0;
@@ -93,6 +80,11 @@ form {
   }
 }
 
+small {
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+
 h1,
 h2,
 h3,
@@ -103,7 +95,7 @@ h6 {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 0;
-  font-family: $headingFont;
+  font-family: $heading-font;
 
   small {
     font-size: 1.6rem;
@@ -160,6 +152,19 @@ img {
   border-style: none;
 }
 
+figure {
+  display: block;
+  margin: 0;
+
+  img {
+    margin: 0;
+  }
+
+  figcaption {
+    display: block;
+  }
+}
+
 kbd {
   padding: 0;
   font-size: 1.6rem;
@@ -195,11 +200,6 @@ samp {
   font-size: 1.6rem;
 }
 
-small {
-  font-weight: 400;
-  font-size: 1.2rem;
-}
-
 sub {
   line-height: 0;
   bottom: -0.4rem;
@@ -224,3 +224,5 @@ svg {
 template {
   display: none;
 }
+
+// CHECKED 1.0
