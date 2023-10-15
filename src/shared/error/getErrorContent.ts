@@ -6,12 +6,18 @@ export const getErrorText = (
   fallbackContent?: ErrorContent
 ): ErrorContent => {
   if (errorMessage) {
-    const errorContent = (
-      errorContents as Record<string, ErrorContent | undefined>
-    )[errorMessage];
+    const errorKeys = Object.keys(
+      errorContents
+    ) as (keyof typeof errorContents)[];
 
-    if (errorContent) {
-      return errorContent;
+    const errorKey = errorKeys.find((key) => {
+      const errorContent = errorContents[key];
+
+      return errorContent.code === errorMessage;
+    });
+
+    if (errorKey) {
+      return errorContents[errorKey];
     }
   }
 

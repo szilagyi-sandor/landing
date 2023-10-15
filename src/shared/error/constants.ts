@@ -1,6 +1,4 @@
-import { ErrorContent, ErrorMessage, ErrorName } from "./domain";
-
-export const errorMessages: Record<ErrorName, ErrorMessage> = {
+export const errorMessages = {
   badRequest: "400",
   unauthorized: "401",
   forbidden: "403",
@@ -8,7 +6,7 @@ export const errorMessages: Record<ErrorName, ErrorMessage> = {
   internalServerError: "500",
 };
 
-export const errorContents: Record<ErrorName, ErrorContent> = {
+export const errorContents = {
   badRequest: {
     code: "400",
     title: "Bad request",

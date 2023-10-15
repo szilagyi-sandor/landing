@@ -1,13 +1,20 @@
-import { ErrorMessage } from "./domain";
+import { useLayoutEffect, useRef } from "react";
 
 type Props = {
-  errorMessage: ErrorMessage;
+  errorMessage: string;
 };
 
-function ErrorThrower({ errorMessage }: Props): JSX.Element {
-  throw new Error(errorMessage);
-}
+export function ErrorThrower({ errorMessage }: Props): JSX.Element {
+  const isThrownRef = useRef(false);
 
-export { ErrorThrower };
+  useLayoutEffect(() => {
+    if (!isThrownRef.current) {
+      isThrownRef.current = true;
+      throw new Error(errorMessage);
+    }
+  }, [errorMessage]);
+
+  return <></>;
+}
 
 // CHECKED 1.0
