@@ -1,9 +1,14 @@
+import { Suspense } from "react";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routing";
 import "./assets/styles/defaults.scss";
 
 export function App() {
   return (
     <div id="app">
-      <h1>SSM Realm Landing</h1>
+      <Suspense>
+        <RouterProvider router={router} />
+      </Suspense>
     </div>
   );
 }

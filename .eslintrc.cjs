@@ -34,6 +34,7 @@ module.exports = {
       "warn",
       { allowConstantExport: true },
     ],
+    "react/no-unescaped-entities": 0,
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/no-non-null-assertion": 0,
     "@typescript-eslint/consistent-type-definitions": 0,
