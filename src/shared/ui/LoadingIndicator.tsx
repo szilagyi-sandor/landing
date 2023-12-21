@@ -1,3 +1,5 @@
+import classes from "./loadingIndicator.module.scss";
+
 type Props = {
   loading?: boolean;
 };
@@ -7,7 +9,7 @@ export function LoadingIndicator({ loading = true }: Props) {
     return null;
   }
 
-  return <div>Loading...</div>;
+  return <div className={classes.loadingIndicator}>Loading...</div>;
 }
 
 // CHECKED 1.0
