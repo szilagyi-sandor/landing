@@ -13,7 +13,7 @@ import {
   socialLinks,
   layoutNavigationLinks,
 } from "./_layoutNavigationConstants";
-import classes from "./__layoutNavigation.module.scss";
+import classes from "./_layoutNavigation.module.scss";
 
 type Props = {
   layoutPaddingBottom: number;
