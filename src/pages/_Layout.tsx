@@ -5,8 +5,8 @@ import { ErrorBoundary } from "@shared/error";
 import { LoadingIndicator } from "@shared/ui";
 import { LazyErrorPage } from ".";
 import { LayoutNavigation } from "./_LayoutNavigation";
-import classes from "./_Layout.module.scss";
-import navigationClasses from "./_LayoutNavigation.module.scss";
+import classes from "./_layout.module.scss";
+import navigationClasses from "./_layoutNavigation.module.scss";
 
 export default function Layout({ children }: PropsWithChildren) {
   const { pathname } = useLocation();

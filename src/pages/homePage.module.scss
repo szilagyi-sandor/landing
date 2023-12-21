@@ -1,0 +1,20 @@
+@import "/src/assets/styles/mixins";
+
+.homePage {
+  @include container;
+
+  flex: 1;
+  display: flex;
+  align-items: center;
+
+  .container {
+    margin-bottom: 24vh;
+
+    h2 {
+      font-size: 7.8rem;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+// CHECKED 1.0

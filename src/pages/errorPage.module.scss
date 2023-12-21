@@ -1,0 +1,13 @@
+@import "/src/assets/styles/mixins";
+
+.errorPage {
+  @include container;
+
+  flex: 1;
+
+  p {
+    margin-bottom: 1em;
+  }
+}
+
+// CHECKED 1.0

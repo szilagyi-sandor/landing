@@ -1,8 +1,9 @@
 import { ComingSoonBanner } from "@shared/ui";
+import classes from "./cvPage.module.scss";
 
 export default function CvPage() {
   return (
-    <section>
+    <section className={classes.cvPage}>
       <header>
         <h2>CV</h2>
       </header>

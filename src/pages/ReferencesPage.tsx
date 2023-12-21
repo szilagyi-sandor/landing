@@ -1,8 +1,9 @@
 import { ComingSoonBanner } from "@shared/ui";
+import classes from "./referencesPage.module.scss";
 
 export default function ReferencesPage() {
   return (
-    <section>
+    <section className={classes.referencesPage}>
       <header>
         <h2>References</h2>
       </header>

@@ -1,0 +1,32 @@
+@import "/src/assets/styles/mixins";
+@import "/src/assets/styles/variables";
+
+.errorPageAtRoot {
+  color: $white;
+  background: $black300;
+
+  .container {
+    @include container;
+
+    display: flex;
+    min-height: 100vh;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+
+    .subContainer {
+      margin-bottom: 24vh;
+
+      h1 {
+        font-size: 3.6rem;
+        margin-bottom: 0.5em;
+      }
+
+      p {
+        margin-bottom: 1em;
+      }
+    }
+  }
+}
+
+// CHECKED 1.0

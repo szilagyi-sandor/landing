@@ -1,4 +1,5 @@
 import { getErrorText, useErrorContext } from "@shared/error";
+import classes from "./errorPage.module.scss";
 
 export default function ErrorPage() {
   const error = useErrorContext();
@@ -6,7 +7,7 @@ export default function ErrorPage() {
   const { code, title, message } = getErrorText(error?.message);
 
   return (
-    <section>
+    <section className={classes.errorPage}>
       <header>
         <h2>
           {code} - {title}

@@ -1,0 +1,9 @@
+@import "/src/assets/styles/mixins";
+
+.blogPage {
+  @include container;
+
+  flex: 1;
+}
+
+// CHECKED 1.0

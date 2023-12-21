@@ -1,0 +1,9 @@
+@import "/src/assets/styles/mixins";
+
+.referencesPage {
+  @include container;
+
+  flex: 1;
+}
+
+// CHECKED 1.0
