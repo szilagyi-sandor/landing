@@ -1,62 +1,129 @@
-import { Link } from "react-router-dom";
+import {
+  useRef,
+  useState,
+  useEffect,
+  useCallback,
+  useLayoutEffect,
+} from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { breakPoint } from "@shared/ui";
 import { routes } from "@shared/constants";
+import { useWindowContext } from "@shared/ui/WindowContext";
+import {
+  socialLinks,
+  layoutNavigationLinks,
+} from "./_layoutNavigationConstants";
+import classes from "./_LayoutNavigation.module.scss";
 
-const email = "szilagyi.sandor.mark@gmail.com";
+type Props = {
+  layoutPaddingBottom: number;
+  setLayoutPaddingBottom: (param: number) => void;
+};
 
-const socialLinks = [
-  {
-    name: "GitHub",
-    target: "_blank",
-    url: "https://github.com/szilagyi-sandor",
-  },
-  {
-    target: "_blank",
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/szilagyi-sandor/",
-  },
-  {
-    target: undefined,
-    name: email,
-    url: `mailto:${email}`,
-  },
-];
+export function LayoutNavigation({
+  layoutPaddingBottom,
+  setLayoutPaddingBottom,
+}: Props) {
+  const { key } = useLocation();
+  const { windowWidth } = useWindowContext();
 
-const links = [
-  { path: routes.cv, text: "CV" },
-  { path: routes.blog, text: "Blog" },
-  { path: routes.contact, text: "Contact" },
-  { path: routes.sandbox, text: "Sandbox" },
-  { path: routes.references, text: "References" },
-  { path: routes.technologies, text: "Technologies" },
-  { path: "/not-found", text: "Not found" },
-];
+  const socialListRef = useRef<HTMLUListElement>(null);
 
-export function LayoutNavigation() {
+  const [open, setOpen] = useState(false);
+
+  const isMobile = windowWidth < breakPoint;
+
+  // set padding on the bottom for the fixed info bar on mobile
+  useLayoutEffect(() => {
+    const socialListHeight = socialListRef.current?.clientHeight ?? 0;
+    setLayoutPaddingBottom(isMobile ? socialListHeight : 0);
+  }, [windowWidth, setLayoutPaddingBottom, isMobile]);
+
+  // close the mobile menu on location change
+  useEffect(() => {
+    setOpen(false);
+  }, [key]);
+
+  // handle the scroll on the body, when the
+  useEffect(() => {
+    const body = document.body;
+
+    if (open && isMobile) {
+      body.classList.add(classes.layoutNavigationOpen);
+
+      if (body.scrollHeight > body.clientHeight) {
+        body.classList.add(classes.scrollable);
+      }
+    } else {
+      body.classList.remove(classes.layoutNavigationOpen, classes.scrollable);
+    }
+  }, [open, isMobile]);
+
+  const toggleOpen = useCallback(() => {
+    setOpen((previousState) => !previousState);
+  }, []);
+
   return (
-    <div>
-      <h1>
-        <Link to={routes.home}>SSM</Link>
-      </h1>
+    <div className={classes.layoutNavigation}>
+      <div className={classes.container}>
+        <h1>
+          <NavLink
+            to={routes.home}
+            className={({ isActive }) =>
+              isActive ? classes.active : undefined
+            }
+          >
+            SSM
+          </NavLink>
+        </h1>
 
-      <ul>
-        {socialLinks.map(({ name, target, url }) => (
-          <li key={name}>
-            <a target={target} href={url}>
-              {name}
-            </a>
-          </li>
-        ))}
-      </ul>
+        <div className={classes.linksContainer}>
+          <ul ref={socialListRef} className={classes.socialList}>
+            {socialLinks.map(({ name, target, url }) => (
+              <li key={name}>
+                <a target={target} href={url}>
+                  {name}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-      <nav>
-        <ul>
-          {links.map(({ path, text }) => (
-            <li key={path}>
-              <Link to={path}>{text}</Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+          {isMobile ? (
+            <button
+              type="button"
+              title="toggle mobile menu"
+              onClick={toggleOpen}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          ) : null}
+
+          {!isMobile || open ? (
+            <nav
+              style={{
+                paddingBottom: isMobile ? layoutPaddingBottom : undefined,
+              }}
+            >
+              <ul>
+                {layoutNavigationLinks.map(({ path, text }) => (
+                  <li key={path}>
+                    <NavLink
+                      to={path}
+                      className={({ isActive }) =>
+                        isActive ? classes.active : undefined
+                      }
+                    >
+                      {text}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ) : null}
+        </div>
+      </div>
     </div>
   );
 }

@@ -14,6 +14,7 @@ module.exports = {
     ".eslintrc.cjs",
     "plugins/ssm-eslint",
     "plugins/ssm-stylelint",
+    "*.scss",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -21,7 +22,6 @@ module.exports = {
     sourceType: "module",
     project: ["./tsconfig.json", "./tsconfig.node.json"],
     tsconfigRootDir: __dirname,
-    extraFileExtensions: [".scss"],
   },
   settings: {
     react: {

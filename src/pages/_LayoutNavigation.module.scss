@@ -1,0 +1,135 @@
+@import "/src/assets/styles/mixins";
+@import "/src/assets/styles/variables";
+
+$logoHeight: 80px;
+
+.layoutNavigation {
+  .container {
+    @include container;
+
+    display: flex;
+    align-items: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+    h1 {
+      z-index: 20;
+      position: relative;
+      margin-right: 12px;
+
+      a {
+        color: $blue500;
+        white-space: nowrap;
+        text-decoration: none;
+        display: inline-block;
+      }
+    }
+
+    .linksContainer {
+      margin-left: auto;
+
+      ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        list-style-type: none;
+        justify-content: flex-end;
+
+        li {
+          a {
+            padding: 4px 8px;
+            text-decoration: none;
+            display: inline-block;
+
+            &.active {
+              color: white;
+              text-decoration: underline;
+            }
+          }
+        }
+
+        &.socialList {
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          z-index: 20;
+          position: fixed;
+          margin-bottom: 8px;
+
+          @media (width >= $breakPoint) {
+            position: initial;
+          }
+        }
+      }
+
+      > button {
+        z-index: 20;
+        border: none;
+        background: none;
+        position: relative;
+        display: inline-block;
+
+        > span {
+          height: 1px;
+          width: 20px;
+          display: block;
+          margin-bottom: 5px;
+          background: white;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      nav {
+        inset: 0;
+        overflow: auto;
+        position: fixed;
+        background: $black300;
+        padding-top: $logoHeight;
+
+        @media (width >= $breakPoint) {
+          padding-top: 0;
+          background: none;
+          position: initial;
+        }
+
+        ul {
+          display: block;
+          padding: 16px 0;
+          text-align: center;
+
+          @media (width >= $breakPoint) {
+            padding: 0;
+            display: flex;
+            text-align: left;
+          }
+
+          li {
+            a {
+              display: block;
+
+              @media (width >= $breakPoint) {
+                display: inline-block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+body.layoutNavigationOpen {
+  overflow: hidden;
+
+  &.scrollable {
+    .layout {
+      padding-right: $scrollbarWidth;
+    }
+  }
+}
+
+// CHECKED 1.0

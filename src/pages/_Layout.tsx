@@ -1,17 +1,27 @@
-import { PropsWithChildren, Suspense } from "react";
+import { PropsWithChildren, Suspense, useState } from "react";
+import classNames from "classnames";
 import { ScrollRestoration, useLocation } from "react-router-dom";
 import { ErrorBoundary } from "@shared/error";
 import { LoadingIndicator } from "@shared/ui";
 import { LazyErrorPage } from ".";
 import { LayoutNavigation } from "./_LayoutNavigation";
+import classes from "./_Layout.module.scss";
+import navigationClasses from "./_LayoutNavigation.module.scss";
 
 export default function Layout({ children }: PropsWithChildren) {
   const { pathname } = useLocation();
+  const [paddingBottom, setPaddingBottom] = useState(0);
 
   return (
-    <section>
+    <section
+      className={classNames(classes.layout, navigationClasses.layout)}
+      style={{ paddingBottom }}
+    >
       <header>
-        <LayoutNavigation />
+        <LayoutNavigation
+          layoutPaddingBottom={paddingBottom}
+          setLayoutPaddingBottom={setPaddingBottom}
+        />
       </header>
 
       <main>

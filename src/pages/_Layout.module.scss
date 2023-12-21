@@ -1,0 +1,33 @@
+@import "/src/assets/styles/mixins";
+@import "/src/assets/styles/variables";
+
+.layout {
+  display: flex;
+  color: $white;
+  min-height: 100vh;
+  background: $black300;
+  flex-direction: column;
+
+  main {
+    flex-grow: 1;
+  }
+
+  footer {
+    @include container;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  a {
+    color: $blue500;
+    transition: color 320ms linear;
+
+    &:hover,
+    &:active {
+      color: $blue300;
+    }
+  }
+}
+
+// CHECKED 1.0

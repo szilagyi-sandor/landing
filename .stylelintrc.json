@@ -3,6 +3,10 @@
   "plugins": ["./plugins/ssm-stylelint/requiredCheckedComment.js"],
   "rules": {
     "value-no-vendor-prefix": null,
-    "ssm-plugin/requiredCheckedComment": true
+    "selector-class-pattern": null,
+    "custom-property-pattern": null,
+    "scss/dollar-variable-pattern": null,
+    "ssm-plugin/requiredCheckedComment": true,
+    "scss/dollar-variable-empty-line-before": null
   }
 }
