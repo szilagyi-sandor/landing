@@ -6,14 +6,12 @@ import {
   useLayoutEffect,
 } from "react";
 import classNames from "classnames";
-import { useWindowContext } from "@shared/ui/WindowContext";
-import { email, socialLinks } from "./_layoutNavigationConstants";
+import { useWindowContext } from "@shared/ui";
+import { useAppsettingsContext } from "@shared/settings";
 import classes from "./_layoutFooter.module.scss";
 import GitHubIcon from "@assets/icons/github.svg?react";
 import EmailIcon from "@assets/icons/envelope.svg?react";
 import LinkedInIcon from "@assets/icons/linkedin.svg?react";
-
-const { gitHub, linkedIn } = socialLinks;
 
 type CopyState = {
   text: string;
@@ -22,6 +20,7 @@ type CopyState = {
 
 export function LayoutFooter() {
   const { windowWidth } = useWindowContext();
+  const { contact } = useAppsettingsContext();
 
   const fixedContainerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<number>();
@@ -52,18 +51,24 @@ export function LayoutFooter() {
     };
   }, [copyState]);
 
+  const email = contact?.email;
+  const githubUrl = contact?.socials?.github;
+  const linkedinUrl = contact?.socials?.linkedin;
+
   const onEmailClick = useCallback(() => {
     const copy = async () => {
-      try {
-        await navigator.clipboard.writeText(email);
-        setCopyState({ text: "Copied to clipboard!" });
-      } catch (error) {
-        setCopyState({ text: email, hasError: true });
+      if (email) {
+        try {
+          await navigator.clipboard.writeText(email);
+          setCopyState({ text: "Copied to clipboard!" });
+        } catch (error) {
+          setCopyState({ text: email, hasError: true });
+        }
       }
     };
 
     void copy();
-  }, []);
+  }, [email]);
 
   return (
     <footer
@@ -75,38 +80,44 @@ export function LayoutFooter() {
           <span>© {new Date().getFullYear()} SSM</span>
 
           <div className={classes.contactContainer}>
-            <button type="button" onClick={onEmailClick}>
-              <EmailIcon />
+            {email ? (
+              <button type="button" onClick={onEmailClick}>
+                <EmailIcon />
 
-              {copyState ? (
-                <span
-                  className={classNames({
-                    [classes.hasError]: copyState.hasError,
-                  })}
-                >
-                  {copyState.text}
-                </span>
-              ) : null}
-            </button>
+                {copyState ? (
+                  <span
+                    className={classNames({
+                      [classes.hasError]: copyState.hasError,
+                    })}
+                  >
+                    {copyState.text}
+                  </span>
+                ) : null}
+              </button>
+            ) : null}
 
-            <a
-              target="_blank"
-              href={linkedIn.url}
-              rel="noreferrer"
-              title={linkedIn.name}
-            >
-              <LinkedInIcon />
-            </a>
+            {linkedinUrl ? (
+              <a
+                target="_blank"
+                rel="noreferrer"
+                title="LinkedIn"
+                href={linkedinUrl}
+              >
+                <LinkedInIcon />
+              </a>
+            ) : null}
 
-            <a
-              target="_blank"
-              href={gitHub.url}
-              rel="noreferrer"
-              title={gitHub.name}
-              className={classes.github}
-            >
-              <GitHubIcon />
-            </a>
+            {githubUrl ? (
+              <a
+                title="GitHub"
+                target="_blank"
+                href={githubUrl}
+                rel="noreferrer"
+                className={classes.github}
+              >
+                <GitHubIcon />
+              </a>
+            ) : null}
           </div>
         </div>
       </div>

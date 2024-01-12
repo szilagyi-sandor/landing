@@ -1,19 +1,5 @@
 import { routes } from "@shared/constants";
 
-export const email = "szilagyi.sandor.mark@gmail.com";
-
-export const socialLinks = {
-  gitHub: {
-    name: "GitHub",
-
-    url: "https://github.com/szilagyi-sandor",
-  },
-  linkedIn: {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/szilagyi-sandor/",
-  },
-};
-
 export const layoutNavigationLinks = {
   left: [
     { path: routes.cv, text: "CV" },
