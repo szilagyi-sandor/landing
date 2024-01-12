@@ -2,23 +2,17 @@ import { routes } from "@shared/constants";
 
 export const email = "szilagyi.sandor.mark@gmail.com";
 
-export const socialLinks = [
-  {
+export const socialLinks = {
+  gitHub: {
     name: "GitHub",
-    target: "_blank",
+
     url: "https://github.com/szilagyi-sandor",
   },
-  {
-    target: "_blank",
+  linkedIn: {
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/szilagyi-sandor/",
   },
-  {
-    target: undefined,
-    name: email,
-    url: `mailto:${email}`,
-  },
-];
+};
 
 export const layoutNavigationLinks = {
   left: [

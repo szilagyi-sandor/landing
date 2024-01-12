@@ -4,6 +4,7 @@ import { ScrollRestoration, useLocation } from "react-router-dom";
 import { ErrorBoundary } from "@shared/error";
 import { LoadingIndicator } from "@shared/ui";
 import { LazyErrorPage } from ".";
+import { LayoutFooter } from "./_LayoutFooter";
 import { LayoutNavigation } from "./_LayoutNavigation";
 import "@assets/styles/fonts.scss";
 import classes from "./_layout.module.scss";
@@ -26,9 +27,7 @@ export default function Layout({ children }: PropsWithChildren) {
         </Suspense>
       </main>
 
-      <footer>
-        <div>© {new Date().getFullYear()} SSM</div>
-      </footer>
+      <LayoutFooter />
 
       <ScrollRestoration />
     </section>
