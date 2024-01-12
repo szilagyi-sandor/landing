@@ -9,7 +9,8 @@ export default function HomePage() {
         </header>
 
         <p>
-          I'm Sándor Szilágyi, a full stack developer and this is my website.
+          I'm Sándor Márk Szilágyi, a full stack developer and this is my
+          website.
         </p>
       </div>
     </section>
