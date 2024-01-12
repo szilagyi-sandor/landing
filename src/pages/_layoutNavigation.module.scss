@@ -1,65 +1,59 @@
 @import "/src/assets/styles/mixins";
 @import "/src/assets/styles/variables";
 
-$logoHeight: 80px;
+$menuHeight: 73px;
 
 .layoutNavigation {
-  .container {
-    @include container;
+  // this one is overwritten by js calculation
+  min-height: $menuHeight;
 
-    display: flex;
-    align-items: center;
-    padding-top: 12px;
-    padding-bottom: 12px;
+  .fixedContainer {
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    position: fixed;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid $gray500;
+    background: rgba(14 15 17 / 60%);
 
-    h1 {
-      z-index: 20;
-      position: relative;
-      margin-right: 12px;
+    .container {
+      @include container;
+
+      display: flex;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      align-items: center;
 
       a {
-        color: $blue500;
-        white-space: nowrap;
+        color: $gray300;
+        padding: 4px 8px;
+        font-weight: 400;
         text-decoration: none;
         display: inline-block;
-      }
-    }
 
-    .linksContainer {
-      margin-left: auto;
-
-      ul {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-wrap: wrap;
-        list-style-type: none;
-        justify-content: flex-end;
-
-        li {
-          a {
-            padding: 4px 8px;
-            text-decoration: none;
-            display: inline-block;
-            font-weight: 400;
-
-            &.active {
-              color: white;
-              text-decoration: underline;
-            }
-          }
+        &:hover,
+        &:active,
+        &.active {
+          color: $white;
         }
 
-        &.socialList {
-          left: 0;
-          bottom: 0;
-          width: 100%;
-          z-index: 20;
-          position: fixed;
-          margin-bottom: 8px;
+        &.active {
+          text-decoration: underline;
+        }
+      }
 
-          @media (width >= $breakPoint) {
-            position: initial;
+      h1 {
+        z-index: 20;
+        position: relative;
+        margin-right: 20px;
+
+        a {
+          padding: 0;
+          white-space: nowrap;
+
+          &.active {
+            text-decoration: none;
           }
         }
       }
@@ -68,6 +62,7 @@ $logoHeight: 80px;
         z-index: 20;
         border: none;
         background: none;
+        margin-left: auto;
         position: relative;
         display: inline-block;
 
@@ -76,7 +71,7 @@ $logoHeight: 80px;
           width: 20px;
           display: block;
           margin-bottom: 5px;
-          background: white;
+          background: $white;
 
           &:last-child {
             margin-bottom: 0;
@@ -85,36 +80,44 @@ $logoHeight: 80px;
       }
 
       nav {
-        inset: 0;
+        // this is relative to the fixed parent div, that's why we cannot use inset:0;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
         overflow: auto;
         position: fixed;
         background: $black300;
-        padding-top: $logoHeight;
+        padding-top: $menuHeight;
 
         @media (width >= $breakPoint) {
+          width: auto;
+          height: auto;
+          flex-grow: 1;
+          display: flex;
           padding-top: 0;
+          flex-wrap: wrap;
           background: none;
-          position: initial;
+          position: relative;
+          align-items: center;
         }
 
         ul {
+          margin: 0;
+          padding: 0;
           display: block;
-          padding: 16px 0;
           text-align: center;
+          list-style-type: none;
 
           @media (width >= $breakPoint) {
-            padding: 0;
             display: flex;
+            flex-wrap: wrap;
             text-align: left;
           }
 
-          li {
-            a {
-              display: block;
-
-              @media (width >= $breakPoint) {
-                display: inline-block;
-              }
+          &:last-child {
+            @media (width >= $breakPoint) {
+              margin-left: auto;
             }
           }
         }

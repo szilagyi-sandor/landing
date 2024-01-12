@@ -38,12 +38,12 @@
   }
 
   a {
-    color: $blue500;
-    transition: color 320ms linear;
+    color: $white;
+    transition: color 220ms linear;
 
     &:hover,
     &:active {
-      color: $blue300;
+      color: $gray300;
     }
   }
 

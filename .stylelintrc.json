@@ -5,6 +5,7 @@
     "value-no-vendor-prefix": null,
     "selector-class-pattern": null,
     "custom-property-pattern": null,
+    "no-descending-specificity": null,
     "scss/dollar-variable-pattern": null,
     "ssm-plugin/requiredCheckedComment": true,
     "scss/dollar-variable-empty-line-before": null

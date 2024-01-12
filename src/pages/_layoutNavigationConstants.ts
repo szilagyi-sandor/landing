@@ -20,14 +20,16 @@ export const socialLinks = [
   },
 ];
 
-export const layoutNavigationLinks = [
-  { path: routes.cv, text: "CV" },
-  { path: routes.references, text: "References" },
-  { path: routes.technologies, text: "Technologies" },
-  { path: routes.contact, text: "Contact" },
-  { path: routes.blog, text: "Blog" },
-  { path: routes.sandbox, text: "Sandbox" },
-  { path: "/not-found", text: "Not found" },
-];
+export const layoutNavigationLinks = {
+  left: [
+    { path: routes.cv, text: "CV" },
+    { path: routes.references, text: "References" },
+    { path: routes.technologies, text: "Technologies" },
+    { path: routes.blog, text: "Blog" },
+    { path: routes.sandbox, text: "Sandbox" },
+    { path: "/not-found", text: "Not found" },
+  ],
+  right: [{ path: routes.contact, text: "Contact" }],
+};
 
 // CHECKED 1.0
