@@ -5,6 +5,7 @@ import { ErrorBoundary } from "@shared/error";
 import { LoadingIndicator } from "@shared/ui";
 import { LazyErrorPage } from ".";
 import { LayoutNavigation } from "./_LayoutNavigation";
+import "@assets/styles/fonts.scss";
 import classes from "./_layout.module.scss";
 import navigationClasses from "./_layoutNavigation.module.scss";
 

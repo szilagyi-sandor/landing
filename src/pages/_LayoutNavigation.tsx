@@ -10,8 +10,8 @@ import { breakPoint } from "@shared/ui";
 import { routes } from "@shared/constants";
 import { useWindowContext } from "@shared/ui/WindowContext";
 import {
-  socialLinks,
   layoutNavigationLinks,
+  socialLinks,
 } from "./_layoutNavigationConstants";
 import classes from "./_layoutNavigation.module.scss";
 

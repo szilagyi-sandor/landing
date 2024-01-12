@@ -15,6 +15,7 @@ module.exports = {
     "plugins/ssm-eslint",
     "plugins/ssm-stylelint",
     "*.scss",
+    "*.svg",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
