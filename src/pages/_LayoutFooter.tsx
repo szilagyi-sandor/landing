@@ -60,7 +60,7 @@ export function LayoutFooter() {
       if (email) {
         try {
           await navigator.clipboard.writeText(email);
-          setCopyState({ text: "Copied to clipboard!" });
+          setCopyState({ text: "Email copied to clipboard!" });
         } catch (error) {
           setCopyState({ text: email, hasError: true });
         }
